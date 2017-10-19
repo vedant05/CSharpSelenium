@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E5882AE7-3967-4EF7-9C68-DE7800AE8D24}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SWAUTCSharpFramework</RootNamespace>
+    <AssemblyName>SeleniumFirst</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelDataReader, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtentReports, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ExtentReports.3.0.2\lib\ExtentReports.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RelevantCodes.ExtentReports">
+      <HintPath>..\..\..\..\..\Desktop\extentreports-net-v2.40.2\RelevantCodes.ExtentReports.dll</HintPath>
+    </Reference>
+    <Reference Include="Selenium.WebDriver.WaitExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.WaitExtensions.1.0.0\lib\Selenium.WebDriver.WaitExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Selenium.WebDriver.3.5.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Selenium.Support.3.5.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="packages\Screenshots.1.0.0\content\Screenshots.cs" />
+    <Compile Include="PageMethods\ForgetPassword.cs" />
+    <Compile Include="PageMethods\SearchHotel.cs" />
+    <Compile Include="PageMethods\SelectHotel.cs" />
+    <Compile Include="PageMethods\NewUserRegistration.cs" />
+    <Compile Include="launchScript\LaunchScript.cs" />
+    <Compile Include="PageMethods\WebCalculator.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\XmlValidation.cs" />
+    <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\DataDriver.cs" />
+    <Compile Include="PageMethods\AdactinApplication.cs" />
+    <Compile Include="PageMethods\AdactinHomePage.cs" />
+    <Compile Include="PageMethods\Page.cs" />
+    <Compile Include="TestCases\TestCases.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\GenericKeywords.cs" />
+    <Compile Include="Web References\MyFirstWebServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\%24RANDOM_SEED%24" />
+    <None Include="bin\Debug\debug.log" />
+    <None Include="bin\Debug\newPathString.XLS" />
+    <None Include="bin\Debug\SeleniumFirst.exe.config" />
+    <None Include="bin\Debug\SeleniumFirst.vshost.exe.config" />
+    <None Include="bin\Debug\SeleniumFirst.vshost.exe.manifest" />
+    <None Include="Nunit\ExcelDataReader.2.1.2.3\ExcelDataReader.2.1.2.3.nupkg" />
+    <None Include="Nunit\NUnit.3.0.1\NUnit.3.0.1.nupkg" />
+    <None Include="Nunit\NUnit.Console.3.0.1\NUnit.Console.3.0.1.nupkg" />
+    <None Include="Nunit\NUnit.Console.3.0.1\tools\nunit-agent-x86.exe.config" />
+    <None Include="Nunit\NUnit.Console.3.0.1\tools\nunit-agent.exe.config" />
+    <None Include="Nunit\NUnit.Console.3.0.1\tools\nunit.engine.addins" />
+    <None Include="Nunit\NUnit.Console.3.0.1\tools\nunit3-console.exe.config" />
+    <None Include="Nunit\NUnit.Runners.3.0.1\NUnit.Runners.3.0.1.nupkg" />
+    <None Include="Nunit\NUnitTestAdapter.2.0.0\NUnitTestAdapter.2.0.0.nupkg" />
+    <None Include="obj\Release\build.force" />
+    <None Include="obj\Release\CoreCompileInputs.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\ExcelDataReader.3.1.0\ExcelDataReader.3.1.0.nupkg" />
+    <None Include="packages\ExtentReports.3.0.2\ExtentReports.3.0.2.nupkg" />
+    <None Include="packages\ExtentReports.3.0.2\lib\license" />
+    <None Include="packages\log4net.2.0.8\log4net.2.0.8.nupkg" />
+    <None Include="packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\Microsoft.Office.Interop.Excel.15.0.4795.1000.nupkg" />
+    <None Include="packages\Microsoft.Web.Xdt.2.1.1\Microsoft.Web.Xdt.2.1.1.nupkg" />
+    <None Include="packages\NuGet.Core.2.14.0\NuGet.Core.2.14.0.nupkg" />
+    <None Include="packages\NUnit.3.7.1\CHANGES.md" />
+    <None Include="packages\NUnit.3.7.1\NUnit.3.7.1.nupkg" />
+    <None Include="packages\NUnit.Console.3.7.0\NUnit.Console.3.7.0.nupkg" />
+    <None Include="packages\NUnit.ConsoleRunner.3.7.0\NUnit.ConsoleRunner.3.7.0.nupkg" />
+    <None Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit-agent-x86.exe.config" />
+    <None Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit-agent.exe.config" />
+    <None Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit.nuget.addins" />
+    <None Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe.config" />
+    <None Include="packages\NUnit.Extension.NUnitProjectLoader.3.5.0\NUnit.Extension.NUnitProjectLoader.3.5.0.nupkg" />
+    <None Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\NUnit.Extension.NUnitV2Driver.3.6.0.nupkg" />
+    <None Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\tools\nunit.v2.driver.addins" />
+    <None Include="packages\NUnit.Extension.NUnitV2ResultWriter.3.5.0\NUnit.Extension.NUnitV2ResultWriter.3.5.0.nupkg" />
+    <None Include="packages\NUnit.Extension.TeamCityEventListener.1.0.2\NUnit.Extension.TeamCityEventListener.1.0.2.nupkg" />
+    <None Include="packages\NUnit.Extension.VSProjectLoader.3.5.0\NUnit.Extension.VSProjectLoader.3.5.0.nupkg" />
+    <None Include="packages\NUnit.Runners.3.7.0\NUnit.Runners.3.7.0.nupkg" />
+    <None Include="packages\NUnitTestAdapter.2.1.1\NUnitTestAdapter.2.1.1.nupkg" />
+    <None Include="packages\Screenshots.1.0.0\Screenshots.1.0.0.nupkg" />
+    <None Include="packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets" />
+    <None Include="packages\Selenium.Chrome.WebDriver.2.30\Selenium.Chrome.WebDriver.2.30.nupkg" />
+    <None Include="packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets" />
+    <None Include="packages\Selenium.Firefox.WebDriver.0.18.0\Selenium.Firefox.WebDriver.0.18.0.nupkg" />
+    <None Include="packages\Selenium.InternetExplorer.WebDriver.3.4\build\Selenium.InternetExplorer.WebDriver.targets" />
+    <None Include="packages\Selenium.InternetExplorer.WebDriver.3.4\Selenium.InternetExplorer.WebDriver.3.4.nupkg" />
+    <None Include="packages\Selenium.Support.3.4.0\Selenium.Support.3.4.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.3.4.0\Selenium.WebDriver.3.4.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.2.31.0\driver\linux64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.2.31.0\driver\mac64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.2.31.0\Selenium.WebDriver.ChromeDriver.2.31.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets" />
+    <None Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\Selenium.WebDriver.GeckoDriver.Win64.0.18.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.IEDriver.3.4.0\build\Selenium.WebDriver.IEDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.IEDriver.3.4.0\Selenium.WebDriver.IEDriver.3.4.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.WaitExtensions.1.0.0\Selenium.WebDriver.WaitExtensions.1.0.0.nupkg" />
+    <None Include="packages\SharpZipLib.0.86.0\SharpZipLib.0.86.0.nupkg" />
+    <None Include="packages\WebDriver.ChromeDriver.26.14.313457.1\WebDriver.ChromeDriver.26.14.313457.1.nupkg" />
+    <None Include="packages\WebDriver.ChromeDriver.win32.2.30.0.0\tools\install.ps1" />
+    <None Include="packages\WebDriver.ChromeDriver.win32.2.30.0.0\tools\uninstall.ps1" />
+    <None Include="packages\WebDriver.ChromeDriver.win32.2.30.0.0\WebDriver.ChromeDriver.win32.2.30.0.0.nupkg" />
+    <None Include="packages\WebDriver.GeckoDriver.0.16.1\tools\Install.ps1" />
+    <None Include="packages\WebDriver.GeckoDriver.0.16.1\tools\uninstall.ps1" />
+    <None Include="packages\WebDriver.GeckoDriver.0.16.1\WebDriver.GeckoDriver.0.16.1.nupkg" />
+    <None Include="packages\WebDriverChromeDriver.2.10\tools\install.ps1" />
+    <None Include="packages\WebDriverChromeDriver.2.10\tools\uninstall.ps1" />
+    <None Include="packages\WebDriverChromeDriver.2.10\WebDriverChromeDriver.2.10.nupkg" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TestData\TestCaseSettings.xls" />
+    <None Include="TestData\TestConfiguration.xls" />
+    <None Include="TestData\TestData.xls" />
+    <None Include="Web References\MyFirstWebServiceReference\calculator.wsdl" />
+    <None Include="Web References\MyFirstWebServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\chromedriver-license.txt" />
+    <Content Include="bin\Debug\chromedriver.exe" />
+    <Content Include="bin\Debug\ExcelDataReader.dll" />
+    <Content Include="bin\Debug\ExcelDataReader.xml" />
+    <Content Include="bin\Debug\ExtentReports.dll" />
+    <Content Include="bin\Debug\geckodriver.exe" />
+    <Content Include="bin\Debug\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="bin\Debug\IEDriverServer.exe" />
+    <Content Include="bin\Debug\log4net.dll" />
+    <Content Include="bin\Debug\log4net.xml" />
+    <Content Include="bin\Debug\Microsoft.Web.XmlTransform.dll" />
+    <Content Include="bin\Debug\NuGet.Core.dll" />
+    <Content Include="bin\Debug\nunit.framework.dll" />
+    <Content Include="bin\Debug\nunit.framework.xml" />
+    <Content Include="bin\Debug\NUnit.System.Linq.dll" />
+    <Content Include="bin\Debug\RelevantCodes.ExtentReports.dll" />
+    <Content Include="bin\Debug\Selenium.WebDriver.WaitExtensions.dll" />
+    <Content Include="bin\Debug\SeleniumFirst.exe" />
+    <Content Include="bin\Debug\SeleniumFirst.pdb" />
+    <Content Include="bin\Debug\WebDriver.dll" />
+    <Content Include="bin\Debug\WebDriver.Support.dll" />
+    <Content Include="bin\Debug\WebDriver.Support.xml" />
+    <Content Include="bin\Debug\WebDriver.xml" />
+    <Content Include="BrowserDrivers\chromedriver.exe" />
+    <Content Include="BrowserDrivers\geckodriver.exe" />
+    <Content Include="BrowserDrivers\IEDriverServer.exe" />
+    <Content Include="chromedriver-license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Nunit\ExcelDataReader.2.1.2.3\lib\net20\Excel.dll" />
+    <Content Include="Nunit\ExcelDataReader.2.1.2.3\lib\net20\Excel.pdb" />
+    <Content Include="Nunit\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll" />
+    <Content Include="Nunit\ExcelDataReader.2.1.2.3\lib\net45\Excel.pdb" />
+    <Content Include="Nunit\NUnit.3.0.1\CHANGES.txt" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\dotnet\nunit.framework.dll" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\dotnet\nunit.framework.xml" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net20\nunit.framework.dll" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net20\nunit.framework.xml" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net40\nunit.framework.dll" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net40\nunit.framework.xml" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net45\nunit.framework.dll" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\net45\nunit.framework.xml" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\portable-net45+win8+wp8+wpa81+Xamarin.Mac+MonoAndroid10+MonoTouch10+Xamarin.iOS10\nunit.framework.dll" />
+    <Content Include="Nunit\NUnit.3.0.1\lib\portable-net45+win8+wp8+wpa81+Xamarin.Mac+MonoAndroid10+MonoTouch10+Xamarin.iOS10\nunit.framework.xml" />
+    <Content Include="Nunit\NUnit.3.0.1\LICENSE.txt" />
+    <Content Include="Nunit\NUnit.3.0.1\NOTICES.txt" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\CHANGES.txt" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\LICENSE.txt" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\NOTICES.txt" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\nunit-project-loader.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\nunit-v2-result-writer.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\nunit.core.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\nunit.core.interfaces.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\nunit.v2.driver.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\addins\vs-project-loader.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\Mono.Cecil.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\nunit.engine.addin.xml" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\nunit.engine.api.dll" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\nunit.engine.api.xml" />
+    <Content Include="Nunit\NUnit.Console.3.0.1\tools\nunit.engine.dll" />
+    <Content Include="Nunit\NUnitTestAdapter.2.0.0\lib\nunit.core.dll" />
+    <Content Include="Nunit\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll" />
+    <Content Include="Nunit\NUnitTestAdapter.2.0.0\lib\nunit.util.dll" />
+    <Content Include="Nunit\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\net20\ExcelDataReader.dll" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\net20\ExcelDataReader.xml" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.dll" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.xml" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\netstandard1.3\ExcelDataReader.dll" />
+    <Content Include="packages\ExcelDataReader.3.1.0\lib\netstandard1.3\ExcelDataReader.xml" />
+    <Content Include="packages\ExtentReports.3.0.2\lib\extent-config.xml" />
+    <Content Include="packages\ExtentReports.3.0.2\lib\ExtentReports.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net20-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net20-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net45-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net45-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\netstandard1.3\log4net.dll" />
+    <Content Include="packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll" />
+    <Content Include="packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net20\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net20\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\lib\net20\NUnit.System.Linq.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net35\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net35\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\lib\net40\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net40\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\lib\net45\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\net45\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\lib\netstandard1.3\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\netstandard1.3\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\lib\netstandard1.6\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.7.1\lib\netstandard1.6\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.7.1\LICENSE.txt" />
+    <Content Include="packages\NUnit.3.7.1\NOTICES.txt" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\CHANGES.txt" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\LICENSE.txt" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\NOTICES.txt" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\Mono.Cecil.dll" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit-agent-x86.exe" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit-agent.exe" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit.engine.api.dll" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit.engine.api.xml" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit.engine.dll" />
+    <Content Include="packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" />
+    <Content Include="packages\NUnit.Extension.NUnitProjectLoader.3.5.0\tools\nunit-project-loader.dll" />
+    <Content Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\LICENSE.txt" />
+    <Content Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\tools\nunit.core.dll" />
+    <Content Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\tools\nunit.core.interfaces.dll" />
+    <Content Include="packages\NUnit.Extension.NUnitV2Driver.3.6.0\tools\nunit.v2.driver.dll" />
+    <Content Include="packages\NUnit.Extension.NUnitV2ResultWriter.3.5.0\tools\nunit-v2-result-writer.dll" />
+    <Content Include="packages\NUnit.Extension.TeamCityEventListener.1.0.2\LICENSE.txt" />
+    <Content Include="packages\NUnit.Extension.TeamCityEventListener.1.0.2\tools\teamcity-event-listener.dll" />
+    <Content Include="packages\NUnit.Extension.VSProjectLoader.3.5.0\tools\vs-project-loader.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\LICENSE.txt" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\Mono.Cecil.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\Mono.Cecil.Mdb.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\Mono.Cecil.Pdb.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\Mono.Cecil.Rocks.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\nunit.core.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\nunit.core.interfaces.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\nunit.util.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.1.1\tools\NUnit.VisualStudio.TestAdapter.dll" />
+    <Content Include="packages\Selenium.Chrome.WebDriver.2.30\driver\chromedriver.exe" />
+    <Content Include="packages\Selenium.Firefox.WebDriver.0.18.0\driver\geckodriver.exe" />
+    <Content Include="packages\Selenium.InternetExplorer.WebDriver.3.4\driver\IEDriverServer.exe" />
+    <Content Include="packages\Selenium.Support.3.4.0\lib\net35\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.4.0\lib\net35\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.4.0\lib\net35\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.4.0\lib\net35\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.31.0\driver\win32\chromedriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\driver\geckodriver.exe" />
+    <Content Include="packages\Selenium.WebDriver.IEDriver.3.4.0\driver\IEDriverServer.exe" />
+    <Content Include="packages\Selenium.WebDriver.WaitExtensions.1.0.0\lib\Selenium.WebDriver.WaitExtensions.dll" />
+    <Content Include="packages\SharpZipLib.0.86.0\lib\11\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="packages\SharpZipLib.0.86.0\lib\SL3\SharpZipLib.Silverlight3.dll" />
+    <Content Include="packages\SharpZipLib.0.86.0\lib\SL4\SharpZipLib.Silverlight4.dll" />
+    <Content Include="packages\WebDriver.ChromeDriver.26.14.313457.1\tools\ChromeDriver.exe" />
+    <Content Include="packages\WebDriver.ChromeDriver.win32.2.30.0.0\content\chromedriver.exe" />
+    <Content Include="packages\WebDriver.ChromeDriver.win32.2.31.0.0\content\chromedriver.exe" />
+    <Content Include="packages\WebDriver.GeckoDriver.0.16.1\content\geckodriver.exe" />
+    <Content Include="packages\WebDriverChromeDriver.2.10\content\chromedriver-license.txt" />
+    <Content Include="packages\WebDriverChromeDriver.2.10\tools\chromedriver.exe" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\Log.txt" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\Result.html" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\ScreenShots\Screenshot1.png" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\ScreenShots\Screenshot2.png" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\ScreenShots\Screenshot3.png" />
+    <Content Include="TestResults\2017_07_31_06_09_01_PM\ScreenShots\Screenshot4.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\Log.txt" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\Result.html" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot1.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot10.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot2.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot3.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot4.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot5.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot6.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot7.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot8.png" />
+    <Content Include="TestResults\2017_08_07_11_33_36_AM\ScreenShots\Screenshot9.png" />
+    <Content Include="UserGUI\AutomationUICSS.css" />
+    <Content Include="UserGUI\ClientLogo.png" />
+    <Content Include="UserGUI\ClientLogo_old.png" />
+    <Content Include="UserGUI\Homescreen.html" />
+    <Content Include="UserGUI\suntechlogo.jpg" />
+    <Content Include="UserGUI\testcases.html" />
+    <Content Include="UserGUI\testconfigurables.html" />
+    <Content Include="UserGUI\title.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\SWAUTCSharpFramework\v14\" />
+    <Folder Include=".vs\SWAUTCSharpFramework\v15\" />
+    <Folder Include="Nunit\NUnitTestAdapter.2.0.0\tools\" />
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://www.dneonline.com/calculator.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MyFirstWebServiceReference\</RelPath>
+      <UpdateFromURL>http://www.dneonline.com/calculator.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SeleniumFirst_MyFirstWebServiceReference_Calculator</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Firefox.WebDriver.0.18.0\build\Selenium.Firefox.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.InternetExplorer.WebDriver.3.4\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.InternetExplorer.WebDriver.3.4\build\Selenium.InternetExplorer.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.5.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.5.0\build\Selenium.WebDriver.IEDriver.targets'))" />
+  </Target>
+  <Import Project="packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.2.31.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="packages\Selenium.InternetExplorer.WebDriver.3.4\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('packages\Selenium.InternetExplorer.WebDriver.3.4\build\Selenium.InternetExplorer.WebDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets" Condition="Exists('packages\Selenium.WebDriver.GeckoDriver.Win64.0.18.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" />
+  <Import Project="packages\Selenium.WebDriver.IEDriver.3.5.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\Selenium.WebDriver.IEDriver.3.5.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

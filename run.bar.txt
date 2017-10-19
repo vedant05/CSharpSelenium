@@ -1,0 +1,4 @@
+cd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
+devenv "C:\DotnetWorkspace\SWAUTCSharpFramework\SWAUTCSharpFramework.sln"/build
+cd C:\DotnetWorkspace\SWAUTCSharpFramework\SeleniumFirst\bin\Debug
+SeleniumFirst.exe
