@@ -1,0 +1,3 @@
+2017-10-19 12:23:45,470 [1] INFO  SWAUTCSharpFramework.Common - Test Output Directory creation successful C:\ZiplockDotnetFramework\TestResults\2017_10_19_12_23_45_PM
+2017-10-19 12:23:45,485 [1] INFO  SWAUTCSharpFramework.Common - Log File creation successful C:\ZiplockDotnetFramework\TestResults\2017_10_19_12_23_45_PM\ExecutionLog.txt
+2017-10-19 12:23:45,554 [1] INFO  SWAUTCSharpFramework.LaunchScript - Log File Started

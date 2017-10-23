@@ -1,0 +1,592 @@
+
+                                        
+
+
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <!--
+                                ExtentReports Library 2.40.0 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+                                Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+                                Documentation: http://extentreports.relevantcodes.com 
+                            -->
+                            <meta charset='UTF-8' /> 
+                            <meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+                            <meta name='robots' content='noodp, noydir' />
+                            <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+                            <title>
+ExtentReports 2.0                            </title>
+
+                            <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+                            <link href='https://cdn.rawgit.com/anshooarora/extentreports/e4f8ea1de961161791c01b99a71a1e17f81125cf/cdn/extent.css' type='text/css' rel='stylesheet' />
+
+                            <style>
+
+                
+                                  </style>
+                        </head>
+                        <body class='extent '>
+                            <!-- nav -->
+                            <nav>
+                                <div class='logo-container'>
+                                    <a class='logo-content' href='http://extentreports.relevantcodes.com'>
+                                        <span>ExtentReports</span>
+                                    </a>
+                                    <a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+                                </div>
+
+                                <!-- sidenav -->
+                                <ul id='slide-out' class='side-nav fixed'>
+                                    <li class='analysis waves-effect active'><a href='#!' class='test-view' onclick='_updateCurrentStage(0)'><i class='mdi-action-dashboard'></i>Test Details</a></li>
+                                                                        <li class='analysis waves-effect'><a href='#!' class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a></li>
+                                </ul>
+                                <!-- /sidenav -->
+
+                                <span class='report-name'>Automation Report</span> <span class='report-headline'></span>
+
+                                <!-- navright -->
+                                <ul class='right hide-on-med-and-down nav-right'>
+                                    <li class='theme-selector' alt='Click to toggle dark theme.' title='Click to toggle dark theme.'>
+                                        <i class='mdi-hardware-desktop-windows'></i>
+                                    </li>
+                                    <li>
+                                        <span class='suite-started-time'>2017-09-26 16:42:51</span>
+                                    </li>
+                                    <li>
+                                        <span>v2.40.2</span>
+                                    </li>
+                                </ul>
+                                <!-- /navright -->
+                            </nav>
+                            <!-- /nav -->
+
+                            <div class='container'>
+                                <!-- dashboard -->
+                                <div id='dashboard-view' class='row'>
+                                    <div class='time-totals'>
+                                        <div class='col l2 m4 s6'>
+                                            <div class='card suite-total-tests'> 
+                                                <span class='panel-name'>Total Tests</span> 
+                                                <span class='total-tests'> <span class='panel-lead'></span> </span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m4 s6'>
+                                            <div class='card suite-total-steps'> 
+                                                <span class='panel-name'>TotalSteps</span> 
+                                                <span class='total-steps'> <span class='panel-lead'></span> </span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l4 m4 s12'>
+                                            <div class='card suite-time'> 
+                                                <span class='panel-name'>Total Time Taken</span> 
+                                                <span class='suite-total-time-taken panel-lead'>0h 2m 40s+577ms</span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m6 s6 suite-start-time'>
+                                            <div class='card green-accent'> 
+                                                <span class='panel-name'>Start</span> 
+                                                <span class='panel-lead suite-started-time'>2017-09-26 16:42:51</span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m6 s6 suite-end-time'>
+                                            <div class='card pink-accent'> 
+                                                <span class='panel-name'>End</span> 
+                                                <span class='panel-lead suite-ended-time'>2017-09-26 16:45:31</span> 
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class='charts'>
+                                        <div class='col s12 m6 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <div>
+                                                    <span class='panel-name'>Tests View</span>
+                                                </div> 
+                                                <div class='panel-setting modal-trigger test-count-setting right'>
+                                                    <a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+                                                </div> 
+                                                <div class='chart-box'>
+                                                    <canvas class='text-centered' id='test-analysis'></canvas>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                        <div class='col s12 m6 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <div>
+                                                    <span class='panel-name'>StepsView</span>
+                                                </div> 
+                                                <div class='panel-setting modal-trigger step-status-filter right'>
+                                                    <a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+                                                </div> 
+                                                <div class='chart-box'>
+                                                    <canvas class='text-centered' id='step-analysis'></canvas>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed</span>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                        <div class='col s12 m12 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <span class='panel-name'>Pass Percentage</span> 
+                                                <span class='pass-percentage panel-lead'></span> 
+                                                <div class='progress light-blue lighten-3'> 
+                                                    <div class='determinate light-blue'></div> 
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class='system-view'>
+                                        <div class='col l4 m12 s12'>
+                                            <div class='card-panel'>
+                                                <span class='label info right outline'>Environment</span>
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Param</th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>User Name</td>
+                                                                <td>Vedant</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Machine Name</td>
+                                                                <td>VEDANT-PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Domain</td>
+                                                                <td>Vedant-PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>OS</td>
+                                                                <td>Win32NT 6.1.7601.65536</td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /dashboard -->
+
+                                <!-- tests -->
+                                <div id='test-view' class='row _addedTable'>
+                                    <div class='col _addedCell1'>
+                                        <div class='contents'>
+                                            <div class='card-panel heading'>
+                                                <h5>Tests</h5>
+                                            </div>
+                                            <div class='card-panel filters'>
+                                                <div>
+                                                    <a data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#' class='dropdown-button button tests-toggle'><i class='mdi-action-subject icon'></i></a>
+                                                    <ul id='tests-toggle' class='dropdown-content'>
+                                                        <li class='pass'><a href='#!'>Pass</a></li>
+                                                        <li class='fail'><a href='#!'>Fail</a></li>
+                                                                                                                                                                        <li class='skip'><a href='#!'>Skip</a></li>
+                                                        <li class='divider'></li>
+                                                        <li class='clear'><a href='#!'>Clear Filters</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <a id='clear-filters' alt='Clear Filters' title='Clear Filters'><i class='mdi-navigation-close icon'></i></a>
+                                                </div>
+                                                <div>&nbsp;&middot;&nbsp;</div>
+                                                <div>
+                                                    <a id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'><i class='mdi-action-track-changes icon'></i></a>
+                                                </div> 
+                                                <div>
+                                                    <a id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters' class='enabled'><i class='mdi-navigation-refresh icon'></i></i></a>
+                                                </div>
+                                                <div>&nbsp;&middot;</div>
+                                                <div class='search' alt='Search Tests' title='Search Tests'>
+                                                    <div class='input-field left'>
+                                                        <input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+                                                    </div>
+                                                    <i class='mdi-action-search icon'></i>
+                                                </div>
+                                            </div>
+                                            <div class='card-panel no-padding-h no-padding-v'>
+                                                <div class='wrapper'>
+                                                    <ul id='test-collection' class='test-collection'>
+                                                            <li class='collection-item test displayed active fail hasChildren' extentid='9a1f2aeb-8d2b-4ca2-b593-0a238a087780'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_001 </span>
+                                                                    <span class='test-status right label capitalize outline fail'>fail</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:42:58</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:11</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 12s+619ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>Login to Adactin Application</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='e3db874f-4c49-4ab1-a2a7-4953280c0c6e'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:43:02</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:43:06</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 3s+794ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_001_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:02</td><td class='step-details'>########### Start of Test Case Data Set: TC_001_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:02</td><td class='step-details'><font color=green>1. Entered  UserName -> prakashs</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:03</td><td class='step-details'><font color=green>2. Entered  Password -> prakash</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:03</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot1.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot1.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:04</td><td class='step-details'><font color=green>3. Clicked on WebElement-login</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:04</td><td class='step-details'><font color=green>4. Successfully logged in to the application</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:05</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot2.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot2.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:05</td><td class='step-details'><font color=green>5. Clicked on WebElement-Logout Link</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:06</td><td class='step-details'><font color=green>6. Clicked on WebElement-Login Again Link</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:06</td><td class='step-details'>########### End of Test Case Data Set: TC_001_01 ###########</td></tr></tbody></table></div></div></li>                                                                                    <li class='displayed node-1x fail' extentid='94068737-9036-4503-9245-f6cae2e6ba49'>
+                                                                                        <div class='collapsible-header test-node fail'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:43:06</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:11</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 1m 4s+772ms</span>
+                                                                                                <span class='test-status label capitalize fail'>fail</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_001_02</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:06</td><td class='step-details'>########### Start of Test Case Data Set: TC_001_02 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:06</td><td class='step-details'><font color=green>1. Entered  UserName -> prakashs</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:06</td><td class='step-details'><font color=green>2. Entered  Password -> wrongPassword</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:43:07</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot3.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot3.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:43:07</td><td class='step-details'><font color=green>3. Clicked on WebElement-login</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status fail'><i class='mdi-navigation-cancel'></i></td><td class='timestamp'>16:44:09</td><td class='step-details'><font color=red>4. Exception Caught, Message is->OpenQA.Selenium.NoSuchElementException: Could not find element by: By.XPath: //input[@id='Reset']
+   at OpenQA.Selenium.Support.PageObjects.DefaultElementLocator.LocateElement(IEnumerable`1 bys)
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.get_Element()
+   at OpenQA.Selenium.Support.PageObjects.WebElementProxy.Invoke(IMessage msg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at OpenQA.Selenium.IWebElement.get_Displayed()
+   at SWAUTCSharpFramework.SearchHotel.VerifyLoginpage() in C:\ZiplockDotnetFramework\PageMethods\SearchHotel.cs:line 119</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:10</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot4.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot4.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status fail'><i class='mdi-navigation-cancel'></i></td><td class='timestamp'>16:44:10</td><td class='step-details'><font color=red>5. Unable to login to application, Check Username and password</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:11</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot5.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot5.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:11</td><td class='step-details'>########### End of Test Case Data Set: TC_001_02 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li>                                                            <li class='collection-item test displayed active pass hasChildren' extentid='c45918ca-28f5-4336-93eb-6ee758a69a1f'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_002 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:18</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:27</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 9s+304ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>Search a hotel</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='b55703b3-90c5-4d2e-8122-c8a413e68d0f'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:22</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:27</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 5s+514ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_002_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:22</td><td class='step-details'>########### Start of Test Case Data Set: TC_002_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:22</td><td class='step-details'><font color=green>1. Entered  UserName -> prakashs</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:22</td><td class='step-details'><font color=green>2. Entered  Password -> prakash</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:23</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot6.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot6.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:24</td><td class='step-details'><font color=green>3. Clicked on WebElement-login</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:24</td><td class='step-details'><font color=green>4. Selected text -Sydney from dropdown->Location</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:24</td><td class='step-details'><font color=green>5. Selected text -Hotel Sunshine from dropdown->Hotel</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:24</td><td class='step-details'><font color=green>6. Selected text -Deluxe from dropdown->RoomType</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:25</td><td class='step-details'><font color=green>7. Selected text -2 - Two from dropdown->NumRooms</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:25</td><td class='step-details'><font color=green>8. Entered  Check In Date -> 43004.6974334491</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:25</td><td class='step-details'><font color=green>9. Entered  Check Out Date -> 43009.6974334491</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:25</td><td class='step-details'><font color=green>10. Selected text -4 - Four from dropdown->Adults</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:26</td><td class='step-details'><font color=green>11. Selected text -4 - Four from dropdown->Children</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:27</td><td class='step-details'><font color=green>12. Clicked on WebElement-Search</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:27</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot7.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot7.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:27</td><td class='step-details'>########### End of Test Case Data Set: TC_002_01 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li>                                                            <li class='collection-item test displayed active pass hasChildren' extentid='e5d370f5-3f09-4cda-8b87-1d0889640da1'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_003 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:34</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:45</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 11s+218ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>Book a hotel</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='408c2bde-c761-4a83-912c-a9e4f72f877e'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:37</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:44:45</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 7s+660ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_003_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:37</td><td class='step-details'>########### Start of Test Case Data Set: TC_003_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:38</td><td class='step-details'><font color=green>1. Entered  UserName -> prakashs</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:38</td><td class='step-details'><font color=green>2. Entered  Password -> prakash</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:38</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot8.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot8.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:40</td><td class='step-details'><font color=green>3. Clicked on WebElement-login</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:40</td><td class='step-details'><font color=green>4. Selected text -Sydney from dropdown->Location</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:41</td><td class='step-details'><font color=green>5. Selected text -Hotel Sunshine from dropdown->Hotel</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:41</td><td class='step-details'><font color=green>6. Selected text -Deluxe from dropdown->RoomType</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:41</td><td class='step-details'><font color=green>7. Selected text -2 - Two from dropdown->NumRooms</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:41</td><td class='step-details'><font color=green>8. Entered  Check In Date -> 43004.6976173611</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:42</td><td class='step-details'><font color=green>9. Entered  Check Out Date -> 43009.6976173611</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:42</td><td class='step-details'><font color=green>10. Selected text -4 - Four from dropdown->Adults</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:43</td><td class='step-details'><font color=green>11. Selected text -4 - Four from dropdown->Children</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:44</td><td class='step-details'><font color=green>12. Clicked on WebElement-Search</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:44</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot9.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot9.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:44</td><td class='step-details'><font color=green>13. Clicked on WebElement-Selected</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:45</td><td class='step-details'><font color=green>14. Clicked on WebElement-Continue</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:45</td><td class='step-details'>########### End of Test Case Data Set: TC_003_01 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li>                                                            <li class='collection-item test displayed active pass hasChildren' extentid='59bd7c5c-2f4e-4909-9db2-615fcf3ffce1'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_004 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:52</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:01</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 9s+837ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>Forget Password functionality</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='aa6bc81f-5c50-4416-b36c-6001a2699fb9'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:44:55</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:01</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 6s+103ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_004_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:44:55</td><td class='step-details'>########### Start of Test Case Data Set: TC_004_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:44:58</td><td class='step-details'><font color=green>1. Clicked on WebElement-ForgetPassword</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:00</td><td class='step-details'><font color=green>2. Entered  Email -> g.nandini438@gmail.com</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:01</td><td class='step-details'><font color=green>3. Clicked on WebElement-Submit</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:01</td><td class='step-details'>########### End of Test Case Data Set: TC_004_01 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li>                                                            <li class='collection-item test displayed active pass hasChildren' extentid='f35e8108-55be-4bf7-a543-d4b549a171df'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_005 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:45:08</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:18</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 9s+821ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>New User Register functionality</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='662b41ef-f218-4db6-a5ce-6262f55cf79b'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:45:11</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:18</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 6s+377ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_005_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:11</td><td class='step-details'>########### Start of Test Case Data Set: TC_005_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:12</td><td class='step-details'><font color=green>1. Clicked on WebElement-New Registration</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:15</td><td class='step-details'><font color=green>2. Clicked on link->New Registration</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:16</td><td class='step-details'><font color=green>3. Entered  UserName -> Pramela123</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:16</td><td class='step-details'><font color=green>4. Entered  Password -> Reset123</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:16</td><td class='step-details'><font color=green>5. Entered  Confirm Password -> Reset123</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:16</td><td class='step-details'><font color=green>6. Entered  Full Name -> G</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:17</td><td class='step-details'><font color=green>7. Entered  Email Address -> nandinig@suntechnologies.com</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:17</td><td class='step-details'><font color=green>8. Clicked on WebElement-Agree</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:17</td><td class='step-details'><font color=green>9. Clicked on Agree checkbox</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:18</td><td class='step-details'>Check ScreenShot Below: <img class='report-img' data-featherlight='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot10.png' src='file:///C:\ZiplockDotnetFramework\TestResults\2017_09_26_04_42_51_PM\ScreenShots\Screenshot10.png' /></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:18</td><td class='step-details'><font color=green>10. Clicked on WebElement-Register</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:18</td><td class='step-details'><font color=green>11. Clicked on Register Button</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:18</td><td class='step-details'>########### End of Test Case Data Set: TC_005_01 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li>                                                            <li class='collection-item test displayed active pass hasChildren' extentid='8f80dcf3-817f-44b6-a2aa-2a54de64b328'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>TC_006 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:45:25</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:31</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 6s+790ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'><font size=4 color=black>WebService Calculator</font><br/></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                                                                                                    <ul class='collapsible node-list' data-collapsible='accordion'>
+                                                                                    <li class='displayed node-1x pass' extentid='6e0978bd-c76f-4b99-a78d-a74985c5d2fb'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:45:28</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:30</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 1s+795ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_006_01</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:28</td><td class='step-details'>########### Start of Test Case Data Set: TC_006_01 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:29</td><td class='step-details'><font color=green>1. Entered FirstNumber 500 and SecondNumber 250 Substraction Result is -> 250</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:30</td><td class='step-details'><font color=green>2. Entered firstNumber 500 and SecondNumber 250 Addition Result is -> 750</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:30</td><td class='step-details'>########### End of Test Case Data Set: TC_006_01 ###########</td></tr></tbody></table></div></div></li>                                                                                    <li class='displayed node-1x pass' extentid='d85642e5-456f-4051-a09f-d140196f760c'>
+                                                                                        <div class='collapsible-header test-node pass'>
+                                                                                            <div class='right test-info'>
+                                                                                                <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2017-09-26 16:45:30</span>
+                                                                                                <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2017-09-26 16:45:31</span>
+                                                                                                <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-2 text-white'>0h 0m 1s+445ms</span>
+                                                                                                <span class='test-status label capitalize pass'>pass</span>
+                                                                                            </div>
+                                                                                            <div class='test-node-name'>TC_006_02</div>
+                                                                                            <div class='test-node-desc'></div>
+                                                                                        </div>
+                                                                                        <div class='collapsible-body'>
+                                                                                            <div class='test-steps'>
+                                                                                                    <table class='bordered table-results'>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th>Status</th>
+                                                                                                                <th>Timestamp</th>
+                                                                                                                <th>Details</th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:30</td><td class='step-details'>########### Start of Test Case Data Set: TC_006_02 ###########</td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:31</td><td class='step-details'><font color=green>1. Entered FirstNumber 780 and SecondNumber 50 Substraction Result is -> 730</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:45:31</td><td class='step-details'><font color=green>2. Entered firstNumber 780 and SecondNumber 50 Addition Result is -> 830</font><br/></td></tr>                                                                                                                <tr>
+                                                                                                                    <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:45:31</td><td class='step-details'>########### End of Test Case Data Set: TC_006_02 ###########</td></tr></tbody></table></div></div></li></ul></div></div></li></ul></div></div></div></div><div id='test-details-wrapper' class='col _addedCell2'><div class='contents'><div class='card-panel details-view'><h5 class='details-name'></h5><div class='details-container'></div></div></div></div></div><!-- /tests --><!-- categories --><!-- /categories --><!-- exceptions --><!-- /exceptions --><!-- testrunner logs --><!-- /testrunner logs --></div><!-- modals --><div id='test-count-setting' class='modal bottom-sheet'> <div class='modal-content'> <h5>Configure Tests Count Setting</h5> <input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> <label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> <br> <input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> <label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> <br> <input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> <label for='childNodes'>Child Tests Only</label> </div> <div class='modal-footer'> <a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> </div> </div> <div id='step-status-filter' class='modal bottom-sheet'> <div class='modal-content'> <h5>Select Status</h5> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> <label for='step-dashboard-filter-pass'>Pass</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> <label for='step-dashboard-filter-fail'>Fail</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> <label for='step-dashboard-filter-fatal'>Fatal</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> <label for='step-dashboard-filter-error'>Error</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> <label for='step-dashboard-filter-warning'>Warning</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> <label for='step-dashboard-filter-skip'>Skipped</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> <label for='step-dashboard-filter-info'>Info</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> <label for='step-dashboard-filter-unknown'>Unknown</label> </div> <div class='modal-footer'> <a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> </div></div><!-- /modals --><script src='https://cdn.rawgit.com/anshooarora/extentreports/c936a26fc8bb9c5fc0253b5bc6f289e1d14bb595/cdn/extent.js' type='text/javascript'></script><script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script><script>
+      $(document).ready(function() {
+
+      });
+      </script></body></html>
